@@ -1,0 +1,24 @@
+    local CoreGui = game:GetService("StarterGui") 
+    CoreGui:SetCore("SendNotification", {
+     Title = "Welcome to Galaxy Hub",
+     Text = "Made By MHD444#8522",
+    Duration = 5;
+    })
+    if not game:IsLoaded() then
+    repeat wait() until game:IsLoaded()
+    end
+    if game.PlaceId == 189707 then
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Natural-Disaster-Survival/main/Source?token=GHSAT0AAAAAABWE73RQ3Q4IJMRQTVUDXGIGYWAICRQ"))()
+elseif game.PlaceId == 9522149469 then
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Strong_Clikers-BY-MHD/main/Source1"))()
+elseif game.PlaceId == 155615604 then
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/-Prison-Life-BY-MHD/main/Source?token=GHSAT0AAAAAABWE73RQZNB6QO2V2TE5J66GYWAIY4A"))()
+elseif game.PlaceId == 3956818381 then
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/-Prison-Life-BY-MHD/main/Source?token=GHSAT0AAAAAABWE73RQZNB6QO2V2TE5J66GYWAIY4A"))()
+elseif game.PlaceId == 662417684 then
+   loadstring(game:HttpGet("https://pastebin.com/raw/nD0QTzUi"))()
+elseif game.PlaceId == 8540346411 then
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Rebirth-Champions-X/main/Source?token=GHSAT0AAAAAABWE73RRPV2LX5NK5R3ZS5TGYWAN6AA"))()
+else
+    game.Players.LocalPlayer:Kick("this game is not supported yet.....")
+end
