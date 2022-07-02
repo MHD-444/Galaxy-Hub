@@ -10,7 +10,7 @@
     if game.PlaceId == 189707 then
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Natural-Disaster-Survival/main/Source"))()
 elseif game.PlaceId == 9522149469 then
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Strong_Clikers-BY-MHD/main/Source1"))()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Strong_Clikers-BY-MHD/main/Strong%20Clikers"))()
 elseif game.PlaceId == 155615604 then
    loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Prison-Life-BY-MHD/main/Source"))()
 elseif game.PlaceId == 3956818381 then
