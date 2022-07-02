@@ -14,11 +14,13 @@ elseif game.PlaceId == 9522149469 then
 elseif game.PlaceId == 155615604 then
    loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Prison-Life-BY-MHD/main/Source"))()
 elseif game.PlaceId == 3956818381 then
-   loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Prison-Life-BY-MHD/main/Source"))()
+   loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Ninja-Legends-BY-MHD/main/Source"))()
 elseif game.PlaceId == 662417684 then
    loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/LUCKY-BLOCKS-Battlegrounds/main/Source"))()
 elseif game.PlaceId == 8540346411 then
    loadstring(game:HttpGet("https://raw.githubusercontent.com/MHD-444/Rebirth-Champions-X/main/Source"))()
+elseif game.PlaceId == 6284583030 then
+   loadstring(game:HttpGet("loadstring(game:HttpGet("https://raw.githubusercontent.com/BLACKGAMER1221/Pet-Simulator-X/main/BK%20Pet.lua"))()
 else
     game.Players.LocalPlayer:Kick("this game is not supported yet.....")
 end
