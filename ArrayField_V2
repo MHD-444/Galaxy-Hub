@@ -1070,7 +1070,7 @@ function Minimise()
 						end
 						for _, child in ipairs(element:GetChildren()) do
 							if child.ClassName == "Frame" or child.ClassName == "TextLabel" or child.ClassName == "TextBox" or child.ClassName == "ImageButton" or child.ClassName == "ImageLabel" then
-                                child.Visible = false
+								child.Visible = false
 							end
 						end
 					end
@@ -1172,7 +1172,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				})
 			end
 
-			if Settings.Discord.RememberJoins then
+			if Settings.Discord.RememberJoins then -- We do logic this way so if the developer changes this setting, the user still won't be prompted, only new users
 				writefile(RayfieldFolder.."/Discord Invites".."/"..Settings.Discord.Invite..ConfigurationExtension,"Rayfield RememberJoins is true for this invite, this invite will not ask you to join again")
 			end
 		else
@@ -2164,7 +2164,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Dropdown.MouseLeave:Connect(function()
 				TweenService:Create(Dropdown, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 			end)
-
+			
+			
+			
 			for _, Option in ipairs(DropdownSettings.Options) do
 				local DropdownOption = Elements.Template.Dropdown.List.Template:Clone()
 				DropdownOption:GetPropertyChangedSignal('BackgroundTransparency'):Connect(function()
@@ -3634,6 +3636,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	return Window
 end
 
+
 function RayfieldLibrary:ToggleOldTabStyle(oldTabStyle) 
 	if oldTabStyle == nil then oldTabStyle = false end
 	
@@ -3765,7 +3768,7 @@ function RayfieldLibrary:SaveConfiguration()
 end
 
 if not getgenv().DisableArrayfieldAutoLoad then
-	task.delay(5, RayfieldLibrary.LoadConfiguration, RayfieldLibrary)
+	task.delay(9, RayfieldLibrary.LoadConfiguration, RayfieldLibrary)
 end
 
 RayfieldLibrary.UI = Rayfield
