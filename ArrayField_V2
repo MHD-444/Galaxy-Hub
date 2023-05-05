@@ -14,7 +14,7 @@ and MHD444 :}
 ]]
 
 local Release = "Galaxy Edition"
-local NotificationDuration = 6.5
+local NotificationDuration = 5
 local RayfieldFolder = "Rayfield"
 local ConfigurationFolder = RayfieldFolder.."/Configurations"
 local ConfigurationExtension = ".rfld"
@@ -101,11 +101,8 @@ local RayfieldLibrary = {
 			InputStroke = Color3.fromRGB(19, 65, 31),
 			PlaceholderColor = Color3.fromRGB(178, 178, 178)
 		},
-
 	}
 }
-
-
 
 -- Services
 
@@ -123,8 +120,9 @@ local ContentProvider = game:GetService("ContentProvider")
 local Rayfield = game:GetObjects("rbxassetid://13067385695")[1]
 
 pcall(function()
-_G.LastRayField.Name = 'Old Arrayfield'
-_G.LastRayField.Enabled = false
+--_G.LastRayField.Name = 'Old Arrayfield'
+--_G.LastRayField.Enabled = false
+_G.LastRayField:Destroy()
 end)
 
 local ParentObject = function(Gui)
@@ -179,7 +177,6 @@ local SideBarClosed = true
 local BarType = 'Top'
 local HoverTime = 0.3
 local Notifications = Rayfield.Notifications
-
 local SelectedTheme = RayfieldLibrary.Theme.Default
 
 function ChangeTheme(ThemeName)
@@ -210,8 +207,8 @@ function ChangeTheme(ThemeName)
 			end
 		end
 	end
-
 end
+
 local function AddDraggingFunctionality(DragPoint, Main)
 	pcall(function()
 		local Dragging, DragInput, MousePos, FramePos = false,false,false,false
@@ -240,14 +237,14 @@ local function AddDraggingFunctionality(DragPoint, Main)
 			end
 		end)
 	end)
-end   
+end
+
 local function FadeDescription(Infos)
 
 end
 local function PackColor(Color)
 	return {R = Color.R * 255, G = Color.G * 255, B = Color.B * 255}
 end    
-
 local function UnpackColor(Color)
 	return Color3.fromRGB(Color.R, Color.G, Color.B)
 end
@@ -669,8 +666,6 @@ function RayfieldLibrary:Notify(NotificationSettings)
 		TweenService:Create(Notification.Description, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.2}):Play()
 		wait(0.2)
 
-
-
 		-- Requires Graphics Level 8-10
 		if false == nil then
 			TweenService:Create(Notification, TweenInfo.new(0.3, Enum.EasingStyle.Quint), {BackgroundTransparency = 0.4}):Play()
@@ -712,13 +707,11 @@ function RayfieldLibrary:Notify(NotificationSettings)
 				TweenService:Create(Action, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 1}):Play()
 			end
 		end
-
 		TweenService:Create(Notification.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Position = UDim2.new(0.47, 0,0.234, 0)}):Play()
 		TweenService:Create(Notification.Description, TweenInfo.new(0.8, Enum.EasingStyle.Quint), {Position = UDim2.new(0.528, 0,0.637, 0)}):Play()
 		TweenService:Create(Notification, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {Size = UDim2.new(0, 280, 0, 83)}):Play()
 		TweenService:Create(Notification.Icon, TweenInfo.new(0.4, Enum.EasingStyle.Quint), {ImageTransparency = 1}):Play()
 		TweenService:Create(Notification, TweenInfo.new(0.8, Enum.EasingStyle.Quint), {BackgroundTransparency = 0.6}):Play()
-
 		wait(0.3)
 		TweenService:Create(Notification.Title, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.4}):Play()
 		TweenService:Create(Notification.Description, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {TextTransparency = 0.5}):Play()
@@ -1174,7 +1167,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				})
 			end
 
-			if Settings.Discord.RememberJoins then -- We do logic this way so if the developer changes this setting, the user still won't be prompted, only new users
+			if Settings.Discord.RememberJoins then
 				writefile(RayfieldFolder.."/Discord Invites".."/"..Settings.Discord.Invite..ConfigurationExtension,"Rayfield RememberJoins is true for this invite, this invite will not ask you to join again")
 			end
 		else
@@ -1372,13 +1365,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 	TweenService:Create(Main.SideTabList, TweenInfo.new(0, Enum.EasingStyle.Quint), {BackgroundTransparency = 1,Size = UDim2.new(0,150,0,390),Position = UDim2.new(0,10,0.5,22)}):Play()
 	TweenService:Create(Main.SideTabList.UIStroke, TweenInfo.new(0, Enum.EasingStyle.Quint),{Transparency = 1}):Play()
 	TweenService:Create(Main.SideTabList.RDMT, TweenInfo.new(0, Enum.EasingStyle.Quint),{TextTransparency = 1}):Play()
--- 	delay(4,function()
--- 		qNotePrompt({
--- 			Title = 'New Library Documentation Available',
--- 			Description = 'The Library Developer has updated the Documentation and recommends all script developers to take a look.',
-
--- 		})
--- 	end)
+ 	delay(4,function()
+ 		qNotePrompt({Title = 'Galaxy Hub', Description = 'We Are Not Responsible For Any Harm Caused By Use The Script, Use At Your Own Risk!',})
+ 	end)
 	TopList.Template.Visible = false
 	SideList.SideTemplate.Visible = false
 	Notifications.Template.Visible = false
@@ -1403,7 +1392,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 	RayFieldQuality.Window = {Tabs = {}}
 	local Window = RayFieldQuality.Window
 	function Window:CreateTab(Name, Image, AllowColorChange)
-		Window.Tabs[Name]={Elements = {}}
+		Window.Tabs[Name] = {Elements = {}}
 		local Tab = Window.Tabs[Name]
 		local SDone = false
 		local TopTabButton,SideTabButton = TopList.Template:Clone(), SideList.SideTemplate:Clone()
@@ -1411,7 +1400,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 		SideTabButton.Parent = SideList
 		TopTabButton.Parent = TopList
 
-		TopTabButton.Name=Name SideTabButton.Name=Name
+		TopTabButton.Name = Name SideTabButton.Name = Name
 
 		TopTabButton.Title.Text = Name SideTabButton.Title.Text = Name
 		SideTabButton.Title.TextWrapped = false TopTabButton.Title.TextWrapped = false 
@@ -2166,9 +2155,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 			Dropdown.MouseLeave:Connect(function()
 				TweenService:Create(Dropdown, TweenInfo.new(0.6, Enum.EasingStyle.Quint), {BackgroundColor3 = SelectedTheme.ElementBackground}):Play()
 			end)
-			
-			
-			
+
 			for _, Option in ipairs(DropdownSettings.Options) do
 				local DropdownOption = Elements.Template.Dropdown.List.Template:Clone()
 				DropdownOption:GetPropertyChangedSignal('BackgroundTransparency'):Connect(function()
@@ -2275,7 +2262,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 				end
 
 				Refresh()
-
 
 				local Success, Response = pcall(function()
 					DropdownSettings.Callback(NewOption)
@@ -2692,7 +2678,7 @@ function RayfieldLibrary:CreateWindow(Settings)
 				if Item ~= Dropdown.List.PlaceHolder and Item ~= SearchBar then
 					if DropdownSettings.Items[Item] then
 						DropdownSettings.Items[Item].Option:Destroy()
-						table.remove(DropdownSettings.Items,table.find(DropdownSettings.Items,Item))
+						table.remove(DropdownSettings.Items, table.find(DropdownSettings.Items,Item))
 					else
 						Error('Option not found.')
 					end
@@ -2764,7 +2750,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 			else
 				Keybind.Parent = TabPage
 			end
-
 
 			Keybind.BackgroundTransparency = 1
 			Keybind.UIStroke.Transparency = 1
@@ -2841,10 +2826,10 @@ function RayfieldLibrary:CreateWindow(Settings)
 						if Held then
 							local Loop; Loop = RunService.Stepped:Connect(function()
 								if not Held then
-									KeybindSettings.Callback(false) -- maybe pcall this
+									KeybindSettings.Callback(false)
 									Loop:Disconnect()
 								else
-									KeybindSettings.Callback(true) -- maybe pcall this
+									KeybindSettings.Callback(true)
 								end
 							end)	
 						end
@@ -2897,12 +2882,10 @@ function RayfieldLibrary:CreateWindow(Settings)
 
 		-- Toggle
 		function Tab:CreateToggle(ToggleSettings)
-
 			local Toggle = Elements.Template.Toggle:Clone()
 			Toggle.Name = ToggleSettings.Name
 			Toggle.Title.Text = ToggleSettings.Name
 			Toggle.Visible = true
-
 			Toggle.BackgroundTransparency = 1
 			Toggle.UIStroke.Transparency = 1
 			Toggle.Title.TextTransparency = 1
@@ -3638,7 +3621,6 @@ function RayfieldLibrary:CreateWindow(Settings)
 	return Window
 end
 
-
 function RayfieldLibrary:ToggleOldTabStyle(oldTabStyle) 
 	if oldTabStyle == nil then oldTabStyle = false end
 	
@@ -3707,14 +3689,14 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 	end
 end)
 
--- Topbar.Theme.MouseButton1Click:Connect(function()
-	-- if Debounce then return end
-	-- if SelectedTheme == RayfieldLibrary.Theme.Default then
-		-- ChangeTheme("Light")
-	-- else
-		-- ChangeTheme("Default")
-	-- end
--- end)
+ Topbar.Theme.MouseButton1Click:Connect(function()
+	 if Debounce then return end
+	 if SelectedTheme == RayfieldLibrary.Theme.Default then
+		 ChangeTheme("Light")
+	 else
+		 ChangeTheme("Default")
+	 end
+ end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
 	if (input.KeyCode == Enum.KeyCode.RightShift and not processed) then
@@ -3746,20 +3728,18 @@ for _, TopbarButton in ipairs(Topbar:GetChildren()) do
 				TweenService:Create(TopbarButton, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {ImageTransparency = 0}):Play()
 			end
 		end)
-
 		TopbarButton.MouseButton1Click:Connect(function()
 			TweenService:Create(TopbarButton, TweenInfo.new(0.7, Enum.EasingStyle.Quint), {ImageTransparency = 0.8}):Play()
 		end)
 	end
 end
 
-
 function RayfieldLibrary:LoadConfiguration()
 	if CEnabled then
 		pcall(function()
 			if isfile(ConfigurationFolder .. "/" .. CFileName .. ConfigurationExtension) then
 				LoadConfiguration(readfile(ConfigurationFolder .. "/" .. CFileName .. ConfigurationExtension))
-				RayfieldLibrary:Notify({Title = "Configuration Loaded", Content = "The configuration file for this script has been loaded from a previous session"})
+				RayfieldLibrary:Notify({Title = "Configuration Loaded", Content = "The configuration file for the script has been loaded from a previous session"})
 			end
 		end)
 	end
