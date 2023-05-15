@@ -1,15 +1,13 @@
 --[[
-
 ArrayField Interface Suite
-by Arrays
-
 Original by Sirius
 
 -------------------------------
 
-Arrays  | Designing + Programming + New Features
-and Rafa =D
-and MHD444 :}
+Made BY:
+Arrays    | Designing + Programming + New Features
+Rafa      | Improve Desing
+MHD444    | Added Mobile Support
 
 ]]
 
@@ -165,7 +163,7 @@ LoadingFrame.Version.Text = Release
 
 --Variables
 
-local request = (syn and syn.request) or (http and http.request) or http_request
+local request = (syn and syn.request) or (http and http.request) or http_request or fluxus.request
 local CFileName = nil
 local CEnabled = false
 local Minimised = false
@@ -904,10 +902,10 @@ SearchBar.Input:GetPropertyChangedSignal('Text'):Connect(function()
 		if page ~= 'Template' then
 			for _,Element in pairs(page:GetChildren())do
 				if Element:IsA("Frame") and Element.Name ~= 'Placeholder' and Element.Name ~= 'SectionSpacing' then
-					if InputText==""or string.find(string.upper(Element.Name),InputText)~=nil then
-						Element.Visible=true
+					if InputText == "" or string.find(string.upper(Element.Name),InputText) ~= nil then
+						Element.Visible = true
 					else
-						Element.Visible=false
+						Element.Visible = false
 					end
 				end
 			end
@@ -981,8 +979,6 @@ function Maximise()
 			end
 		end
 	end
-
-
 	wait(0.1)
 
 	for _, tabbtn in ipairs(TopList:GetChildren()) do
@@ -3693,14 +3689,68 @@ Topbar.Hide.MouseButton1Click:Connect(function()
 	end
 end)
 
- Topbar.Theme.MouseButton1Click:Connect(function()
-	 if Debounce then return end
-	 if SelectedTheme == RayfieldLibrary.Theme.Default then
-		 ChangeTheme("Light")
-	 else
-		 ChangeTheme("Default")
-	 end
- end)
+-- Mobile Hide / Unhide Button
+
+if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ArrayfieldToggleUI") then
+	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ArrayfieldToggleUI"):Destroy()
+end
+
+local ArrayfieldScreen   = Instance.new("ScreenGui")
+local ArrayfieldToggleUI = Instance.new("TextButton")
+local ArrayfieldCornerUI = Instance.new("UICorner")
+local ArrayfieldImageUI  = Instance.new("ImageLabel")
+
+ArrayfieldScreen.Name = "ArrayfieldToggleScreen"
+ArrayfieldScreen.Parent = game.CoreGui
+ArrayfieldScreen.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+ArrayfieldToggleUI.Name = "ArrayfieldToggleUI"
+ArrayfieldToggleUI.Parent = ArrayfieldScreen
+ArrayfieldToggleUI.BackgroundColor3 = Color3.fromRGB(31,31,31)
+ArrayfieldToggleUI.BorderSizePixel = 0
+ArrayfieldToggleUI.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
+ArrayfieldToggleUI.Size = UDim2.new(0, 50, 0, 50)
+ArrayfieldToggleUI.Font = Enum.Font.SourceSans
+ArrayfieldToggleUI.Text = ""
+ArrayfieldToggleUI.TextColor3 = Color3.fromRGB(0, 0, 0)
+ArrayfieldToggleUI.TextSize = 14.000
+ArrayfieldToggleUI.Draggable = true
+ArrayfieldToggleUI.MouseButton1Click:Connect(function()
+    if Debounce then return end
+    if Hidden then
+        Hidden = false
+        Unhide()
+    else
+		if not SearchHided then spawn(CloseSearch) end
+		Hidden = true
+		Hide()
+	end
+    -- game:GetService("VirtualInputManager"):SendKeyEvent(true, RightShift, false, game)
+    -- game:GetService("VirtualInputManager"):SendKeyEvent(false, RightShift, false, game)
+end)
+
+ArrayfieldCornerUI.Name = "ArrayfieldCornerUI"
+ArrayfieldCornerUI.Parent = ArrayfieldToggleUI
+
+ArrayfieldImageUI.Name = "GalaxyHubImage"
+ArrayfieldImageUI.Parent = ArrayfieldToggleUI
+ArrayfieldImageUI.BackgroundColor3 = Color3.fromRGB(192,192,192)
+ArrayfieldImageUI.BackgroundTransparency = 1.000
+ArrayfieldImageUI.BorderSizePixel = 0
+ArrayfieldImageUI.Position = UDim2.new(0.0, 0, 0.0, 0)
+ArrayfieldImageUI.Size = UDim2.new(0, 50, 0, 50)
+ArrayfieldImageUI.Image = "http://www.roblox.com/asset/?id=11135479735"
+
+-----------
+
+Topbar.Theme.MouseButton1Click:Connect(function()
+	if Debounce then return end
+	if SelectedTheme == RayfieldLibrary.Theme.Default then
+		ChangeTheme("Light")
+	else
+		ChangeTheme("Default")
+	end
+end)
 
 UserInputService.InputBegan:Connect(function(input, processed)
 	if (input.KeyCode == Enum.KeyCode.RightShift and not processed) then
