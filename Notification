@@ -151,7 +151,7 @@ function tween(go, t, dir)
     end
 end
 
-function lib:MakeNotification(notif_table:table)
+function lib:Notify(notif_table:table)
 	local nt = notif_table or {
 		Title = "focat's notification lib",
 		Text = "This is a test notification.",
