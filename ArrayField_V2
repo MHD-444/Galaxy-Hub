@@ -3691,8 +3691,8 @@ end)
 
 -- Mobile Hide / Unhide Button
 
-if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ArrayfieldToggleUI") then
-	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ArrayfieldToggleUI"):Destroy()
+if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ArrayfieldToggleScreen") then
+	game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("ArrayfieldToggleScreen"):Destroy()
 end
 
 local ArrayfieldScreen   = Instance.new("ScreenGui")
