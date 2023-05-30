@@ -12,7 +12,7 @@ MHD444    | Added Mobile Support
 ]]
 
 local Release = "Galaxy Edition"
-local NotificationDuration = 5
+local NotificationDuration = 4
 local RayfieldFolder = "Rayfield"
 local ConfigurationFolder = RayfieldFolder.."/Configurations"
 local ConfigurationExtension = ".rfld"
@@ -118,9 +118,9 @@ local ContentProvider = game:GetService("ContentProvider")
 local Rayfield = game:GetObjects("rbxassetid://13067385695")[1]
 
 pcall(function()
---_G.LastRayField.Name = 'Old Arrayfield'
---_G.LastRayField.Enabled = false
-_G.LastRayField:Destroy()
+_G.LastRayField.Name = 'Old Arrayfield'
+_G.LastRayField.Enabled = false
+--_G.LastRayField:Destroy()
 end)
 
 local ParentObject = function(Gui)
