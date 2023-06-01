@@ -4,7 +4,7 @@ focat's notification lib
 MHD444
 
 ]]
-
+local protect
 protect = (syn.protect_gui or gethui)
 
 local lib = {}
