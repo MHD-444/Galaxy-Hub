@@ -118,8 +118,8 @@ local ContentProvider = game:GetService("ContentProvider")
 local Rayfield = game:GetObjects("rbxassetid://13067385695")[1]
 
 pcall(function()
---_G.LastRayField.Name = 'Old Arrayfield'
---_G.LastRayField.Enabled = false
+_G.LastRayField.Name = 'Old Arrayfield'
+_G.LastRayField.Enabled = false
 _G.LastRayField:Destroy()
 end)
 
