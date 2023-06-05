@@ -118,8 +118,8 @@ local ContentProvider = game:GetService("ContentProvider")
 local Rayfield = game:GetObjects("rbxassetid://13067385695")[1]
 
 pcall(function()
-_G.LastRayField.Name = 'Old Arrayfield'
-_G.LastRayField.Enabled = false
+--_G.LastRayField.Name = 'Old Arrayfield'
+--_G.LastRayField.Enabled = false
 _G.LastRayField:Destroy()
 end)
 
@@ -192,7 +192,6 @@ function ChangeTheme(ThemeName)
 	Rayfield.Main.Topbar.BackgroundColor3 = SelectedTheme.Topbar
 	Rayfield.Main.Topbar.CornerRepair.BackgroundColor3 = SelectedTheme.Topbar
 	Rayfield.Main.Shadow.Image.ImageColor3 = SelectedTheme.Shadow
-
 	Rayfield.Main.Topbar.ChangeSize.ImageColor3 = SelectedTheme.TextColor
 	Rayfield.Main.Topbar.Hide.ImageColor3 = SelectedTheme.TextColor
 	Rayfield.Main.Topbar.Theme.ImageColor3 = SelectedTheme.TextColor
@@ -2052,9 +2051,9 @@ function RayfieldLibrary:CreateWindow(Settings)
 					elseif #DropdownSettings.CurrentOption == 0 then
 						Dropdown.Selected.Text = "None"
 					else
-						print(#DropdownSettings.CurrentOption)
+						--print(#DropdownSettings.CurrentOption)
 						for i, v in pairs(DropdownSettings.CurrentOption) do
-							print(i, v)
+							--print(i, v)
 						end
 						Dropdown.Selected.Text = "Various"
 					end
